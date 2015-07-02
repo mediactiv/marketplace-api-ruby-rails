@@ -32,6 +32,7 @@ RSpec.configure do |config|
   Dir[Rails.root.join('spec/support/**/*.rb')].each {|f| require f}
   config.include Request::JsonHelpers,:type=>:controller
   config.include Request::HeadersHelpers, :type=> :controller
+  config.include Devise::TestHelpers, :type => :controller
   # use the methods defined in request_helpers
   config.before(:each,type: :controller) do
     include_default_accept_headers

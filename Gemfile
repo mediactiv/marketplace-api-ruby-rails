@@ -41,6 +41,13 @@ group	:test	do
   gem 'shoulda-matchers'
 end
 
+group :development do
+  # gem	'sabisu_rails',	github:	"IcaliaLabs/sabisu-rails"
+  # gem	'compass-rails'
+  # gem	'furatto'
+  # gem	'font-awesome-rails'
+  # gem	'simple_form'
+end
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record

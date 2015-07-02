@@ -33,10 +33,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 #APi gems
 
 gem 'active_model_serializers', '0.9.3'
-
+gem 'devise'
 group	:test	do
-  gem	"rspec-rails"
-  gem	"factory_girl_rails"
+  gem	'rspec-rails'
+  gem	'factory_girl_rails'
   gem	'ffaker'
 end
 

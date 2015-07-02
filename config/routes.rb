@@ -1,10 +1,11 @@
-Rails.application.routes.draw do
-  namespace :api,defaults:{format: :json} do
+require 'api_constraints'
+
+MarketPlaceApi::Application.routes.draw do
+  devise_for :users
+  namespace :api, defaults: {format: :json}, path: '/' do
     #will refer to controllers/api folder
-    scope module: :v1 do
-      constraints: ApiConstraints.new(version:1,default:true) do
+    scope module: :v1, constraints: ApiConstraints.new(version:1,default: true) do
         # list the resources here
-      end
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.

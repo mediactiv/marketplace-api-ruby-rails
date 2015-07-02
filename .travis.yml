@@ -1,4 +1,8 @@
 language: ruby
 
-before_script:
-  - bundle install
+rvm:
+	- 2.2.1
+	- 2.0.0
+	- 1.9.3
+
+bundler_args: --without production

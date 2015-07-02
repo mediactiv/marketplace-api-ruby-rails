@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   namespace :api,defaults:{format: :json} do
     #will refer to controllers/api folder
     scope module: :v1 do
-      # list the resources here
+      constraints: ApiConstraints.new(version:1,default:true) do
+        # list the resources here
+      end
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.

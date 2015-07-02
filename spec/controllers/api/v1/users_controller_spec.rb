@@ -3,10 +3,7 @@ require 'spec_helper'
 
 describe Api::V1::UsersController do
 
-  # before(:each) do
-  #   request.headers['Accept'] = "application/vnd.marketplace.v1, #{Mime::JSON}"
-  #   request.headers['Content-Type'] = Mime::JSON.to_s
-  # end
+
 
   #@note @rails setting Mime::JSON removes the need for specifying format:json in requests
   describe "GET #Show" do

@@ -7,6 +7,9 @@ class User < ActiveRecord::Base
   before_create :generate_authentication_token!
 
   validates :auth_token, uniqueness:{case_sensitive: true}, allow_nil: true
+  
+  has_many :products, dependent: :destroy
+
   # generating auth token
   def generate_authentication_token!
     begin

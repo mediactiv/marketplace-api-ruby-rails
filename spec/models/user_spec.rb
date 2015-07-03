@@ -13,6 +13,7 @@ describe User do
   it {should validate_uniqueness_of(:email)}
   it {should validate_confirmation_of(:password)}
   it {should allow_value('example@domain.com').for(:email)}
+  it {should have_many :products }
   # without shoulda_matchers
   describe 'when email is not present' do
     before {@user.email=" "}

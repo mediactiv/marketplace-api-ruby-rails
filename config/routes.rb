@@ -1,9 +1,6 @@
 require 'api_constraints'
 
-
-
 MarketPlaceApi::Application.routes.draw do
-
   # mount SabisuRails::Engine => "/sabisu_rails"
   devise_for :users
   root 'application#index'
@@ -13,6 +10,7 @@ MarketPlaceApi::Application.routes.draw do
       # list the resources here
       resources :users, only: [:index,:show,:create,:update,:destroy]
       resources :sessions,only: [:create,:destroy]
+      resources :products
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.

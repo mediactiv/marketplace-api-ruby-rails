@@ -23,12 +23,11 @@ before_script:
 language: ruby
 rvm:
   - 2.2.1
-  - 2.0.0
+language: ruby
+
+rvm:
+	- 2.2.1
+	- 2.0.0
+	- 1.9.3
 
 bundler_args: --without production
-
-before_script: 
-  - rake test:prepare
-  - rake db:migrate RAILS_ENV=test
->>>>>>> e493245... travis
->>>>>>> dbc7dca... # This is a combination of 2 commits.

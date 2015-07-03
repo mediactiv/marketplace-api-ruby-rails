@@ -4,7 +4,10 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> dbc7dca... # This is a combination of 2 commits.
 
   before_create :generate_authentication_token!
 
@@ -15,5 +18,8 @@ class User < ActiveRecord::Base
       self.auth_token = Devise.friendly_token
     end while self.class.exists?(auth_token: auth_token)
   end
+<<<<<<< HEAD
 >>>>>>> a8994f5... 5.7 Destroy action sessions spec
+=======
+>>>>>>> dbc7dca... # This is a combination of 2 commits.
 end

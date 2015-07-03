@@ -2,9 +2,18 @@
 language: ruby
 rvm:
   - 2.2.1
+<<<<<<< HEAD
 
 bundler_args: --without production
+=======
+  - 2.0.0
+<<<<<<< HEAD
+  - 1.9.3
+>>>>>>> 7bfc604... travis
+=======
+>>>>>>> 9d7cfae... travis
 
+<<<<<<< HEAD
 before_script: 
   - rake test:prepare
   - rake db:migrate RAILS_ENV=test
@@ -31,3 +40,18 @@ rvm:
 	- 1.9.3
 
 bundler_args: --without production
+=======
+bundler_args: --without production
+
+<<<<<<< HEAD
+before_script: rake test:prepare
+>>>>>>> 4dfad1a... travis
+=======
+before_script: 
+<<<<<<< HEAD
+  - rake test:prepare
+>>>>>>> a1fdffd... travis
+=======
+  - rake test:prepare
+  - rake db:migrate RAILS_ENV=test
+>>>>>>> e493245... travis

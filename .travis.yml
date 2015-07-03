@@ -1,4 +1,9 @@
 language: ruby
+rvm:
+  - 2.2.1
 
-before_script:
-  - bundle install
+bundler_args: --without production
+
+before_script: 
+  - rake test:prepare
+  - rake db:migrate RAILS_ENV=test

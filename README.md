@@ -1,28 +1,46 @@
-== README
+#market place api
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+author mparaiso <mparaiso@online.fr>
 
-Things you may want to cover:
+license Apache
 
-* Ruby version
+[![Build Status](https://travis-ci.org/mediactiv/marketplace-api-ruby-rails.svg?branch=5-Authenticating-users)](https://travis-ci.org/mediactiv/marketplace-api-ruby-rails)
 
-* System dependencies
+market place is an exemple of a REST api implemented with Rails based on the following book : http://apionrails.icalialabs.com
 
-* Configuration
+## installation 
 
-* Database creation
+### requirements
 
-* Database initialization
+- ruby 2.1.1
 
-* How to run the test suite
+- git
 
-* Services (job queues, cache servers, search engines, etc.)
+### usage
 
-* Deployment instructions
+- clone the repository then **cd** to the repository folder
 
-* ...
+in the command line :
+
+- rake db:migrate
+
+start the server 
+
+- rails server 
+
+####end points
+
+use **curl** to test endpoints
+
+create a user
+
+curl -X POST http://localhost:port/users -H "Content-Type: application/json" -d'{"user"{"email":"foo@example.com","password":"password","password_confirmation":"password"}}
+
+sign in to get a authentication token
+
+curl -X POST http://localhost:port/sessions -H "Content-Type: application/json" -d'{"session"{"email":"foo@example.com","password":"password"}}
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+
+
+

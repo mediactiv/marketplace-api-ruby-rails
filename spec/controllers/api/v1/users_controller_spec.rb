@@ -56,6 +56,11 @@ describe Api::V1::UsersController do
 
   describe "PUT/PATCH	#update" do
 
+    before(:each) do
+      @user = FactoryGirl.create :user
+      request.headers['Authorization'] = @user.auth_token
+    end
+
     context "when	is	successfully	updated" do
       before(:each) do
         @user = FactoryGirl.create :user
@@ -80,7 +85,7 @@ describe Api::V1::UsersController do
         user_response = json_response
         expect(user_response).to have_key(:errors)
       end
-      it "renders	the	json	errors	on	whye	the	user	could	not	be	created" do
+      it "renders	the	json	errors	on	why	the	user	could	not	be	created" do
 
         user_response = json_response
         expect(user_response[:errors][:email]).to include "is invalid"
@@ -93,6 +98,7 @@ describe Api::V1::UsersController do
   describe "DELETE	#destroy" do
     before(:each) do
       @user = FactoryGirl.create :user
+      api_authorization_header @user.auth_token
       delete :destroy, {id: @user.id}
     end
     it { should respond_with 204 }

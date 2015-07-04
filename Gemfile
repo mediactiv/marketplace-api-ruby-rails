@@ -3,7 +3,8 @@ source 'https://rubygems.org'
 ruby '2.2.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
-
+gem 'foreman'
+gem 'rack','~> 1.6.4'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -31,6 +32,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 #APi gems
+gem 'puma'
 
 gem 'active_model_serializers', '0.9.3'
 gem 'devise'
@@ -43,7 +45,6 @@ group	:test	do
 end
 
 group :development do
-  gem 'thin'
   # gem	'sabisu_rails',	github:	"IcaliaLabs/sabisu-rails"
   # gem	'compass-rails'
   # gem	'furatto'

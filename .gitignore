@@ -18,4 +18,8 @@
 
 .idea
 
+<<<<<<< HEAD
 *.orig
+=======
+*.orig
+>>>>>>> master

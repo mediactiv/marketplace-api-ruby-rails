@@ -12,7 +12,8 @@ MarketPlaceApi::Application.routes.draw do
         # product creation and deletion has to be accessed through user
         resources :products,only:[:create,:update,:destroy]
       end
-      resources :sessions,only: [:create,:destroy]
+      resources :sessions, only: [:create,:destroy]
+      resources :products, only:[:index,:show]
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.

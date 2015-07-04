@@ -8,8 +8,7 @@ describe Api::V1::ProductsController  do
       get :index
     end
     it 'returns 4 records from db' do
-      product_response=json_response
-      product_response[:products].count.should eq 4
+      json_response[:products].count.should eq 4
     end
     it {should respond_with 200}
   end
@@ -20,8 +19,7 @@ describe Api::V1::ProductsController  do
       get :show, id: @product.id
     end
     it "returns http success" do
-      product_reponse = json_response
-      expect(product_reponse[:title]).to eql @product.title#have_http_status(:success)
+      expect(json_response[:product][:title]).to eql @product.title#have_http_status(:success)
     end
     it {should respond_with 200 }
   end
@@ -36,8 +34,7 @@ describe Api::V1::ProductsController  do
       end
 
       it "renders the json representation for the product record just created" do
-        product_response = json_response
-        expect(product_response[:title]).to eql @product_attributes[:title]
+        expect(json_response[:product][:title]).to eql @product_attributes[:title]
       end
 
       it { should respond_with 201 }
@@ -52,13 +49,11 @@ describe Api::V1::ProductsController  do
       end
 
       it "renders an errors json" do
-        product_response = json_response
-        expect(product_response).to have_key(:errors)
+        expect(json_response).to have_key(:errors)
       end
 
       it "renders the json errors on whye the user could not be created" do
-        product_response = json_response
-        expect(product_response[:errors][:price]).to include "is not a number"
+        expect(json_response[:errors][:price]).to include "is not a number"
       end
 
       it { should respond_with 422 }
@@ -80,8 +75,7 @@ describe Api::V1::ProductsController  do
       end
 
       it "renders the json representation for the updated user" do
-        product_response = json_response
-        expect(product_response[:title]).to eql "An expensive TV"
+        expect(json_response[:product][:title]).to eql "An expensive TV"
       end
 
       it { should respond_with 200 }
@@ -99,8 +93,7 @@ describe Api::V1::ProductsController  do
       end
 
       it "renders the json errors on whye the user could not be created" do
-        product_response = json_response
-        expect(product_response[:errors][:price]).to include "is not a number"
+        expect(json_response[:errors][:price]).to include "is not a number"
       end
 
       it { should respond_with 422 }

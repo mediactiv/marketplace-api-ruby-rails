@@ -34,9 +34,7 @@ RSpec.configure do |config|
   config.include Request::HeadersHelpers, :type=> :controller
   config.include Devise::TestHelpers, :type => :controller
   # use the methods defined in request_helpers
-  config.before(:each,type: :controller) do
-    include_default_accept_headers
-  end
+  config.before(:each,type: :controller) { include_default_accept_headers }
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.

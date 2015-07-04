@@ -65,6 +65,7 @@ describe Api::V1::ProductsController  do
     end
   end
 
+<<<<<<< HEAD
   describe "PUT #update" do
     context 'when product is successfully updated' do
       before :each do
@@ -79,4 +80,6 @@ describe Api::V1::ProductsController  do
     end
   end
 
+=======
+>>>>>>> 2f441b99e2ad5f152fa7f9284eb8739d65aad222
 end

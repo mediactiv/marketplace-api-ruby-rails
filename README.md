@@ -26,7 +26,7 @@ in the command line :
 
 start the server 
 
-- rails server 
+- rails s puma -p 8080 -b 0.0.0.0
 
 ####end points
 

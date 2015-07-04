@@ -36,20 +36,21 @@ gem 'puma'
 
 gem 'active_model_serializers', '0.9.3'
 gem 'devise'
-group	:test	do
+gem 'factory_girl_rails' # create fixtures for tests
+gem 'faker'# generate fake datas
+
+group :test do
   gem 'rake'
-  gem	'rspec-rails'
-  gem	'factory_girl_rails' # create fixtures for tests
-  gem	'faker'# generate fake datas
+  gem 'rspec-rails'
   gem 'shoulda-matchers'
 end
 
 group :development do
-  # gem	'sabisu_rails',	github:	"IcaliaLabs/sabisu-rails"
-  # gem	'compass-rails'
-  # gem	'furatto'
-  # gem	'font-awesome-rails'
-  # gem	'simple_form'
+  # gem 'sabisu_rails', github: "IcaliaLabs/sabisu-rails"
+  # gem 'compass-rails'
+  # gem 'furatto'
+  # gem 'font-awesome-rails'
+  # gem 'simple_form'
 end
 
 group :development, :test do

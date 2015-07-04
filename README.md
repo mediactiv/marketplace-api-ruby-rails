@@ -26,7 +26,9 @@ in the command line :
 
 start the server 
 
-- rails s puma -p 8080 -b 0.0.0.0
+- rails s -p 8080 -b 0.0.0.0
+
+replace -p with your port and -b with an ip address (or omit -b and its argument)
 
 ####end points
 

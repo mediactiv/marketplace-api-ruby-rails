@@ -10,7 +10,7 @@ MarketPlaceApi::Application.routes.draw do
       # list the resources here
       resources :users, only: [:index,:show,:create,:update,:destroy]
       resources :sessions,only: [:create,:destroy]
-      resources :products
+      resources :products,only: [:show,:index]
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.

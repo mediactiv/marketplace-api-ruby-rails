@@ -36,8 +36,7 @@ gem 'puma'
 
 gem 'active_model_serializers', '0.9.3'
 gem 'devise'
-gem 'factory_girl_rails' # create fixtures for tests
-gem 'faker'# generate fake datas
+
 
 group :test do
   gem 'rake'
@@ -61,7 +60,8 @@ group :development, :test do
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
-
+  gem 'factory_girl_rails' # create fixtures for tests
+  gem 'faker'# generate fake datas
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end

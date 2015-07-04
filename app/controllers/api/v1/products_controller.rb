@@ -7,8 +7,17 @@ class Api::V1::ProductsController < ApplicationController
 
   # index lists all products 
   def index
-    respond_with Product.all
+    if params[:user_id] && user = User.find(params[:user_id])
+      if current_user && user == current_user
+        respond_with current_user.products.all
+      else
+        respond_with user.find.products.all
+      end
+    else
+      respond_with Product.all
+    end
   end
+  
   # show shows a product
   def show
     respond_with Product.find(params[:id])

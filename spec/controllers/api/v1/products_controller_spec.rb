@@ -3,19 +3,32 @@ require 'spec_helper'
 describe Api::V1::ProductsController  do
 
   describe "GET #index" do
-    before :each do
-      4.times{FactoryGirl.create :product}
-      get :index
-    end
-    it 'returns 4 records from db' do
-      json_response[:products].count.should eq 4
-    end
-    it {should respond_with 200}
-    it 'returns the user object into each product' do
-      json_response[:products].each do |product_response|
-        expect(product_response[:user_id]).to be_present
+    context 'when no product_ids parameters' do
+      before :each do
+        4.times{FactoryGirl.create :product}
+        get :index
+      end
+      it 'returns 4 records from db' do
+        json_response[:products].count.should eq 4
+      end
+      it {should respond_with 200}
+      it 'returns the user object into each product' do
+        json_response[:products].each do |product_response|
+          expect(product_response[:user_id]).to be_present
+        end
       end
     end
+
+    context 'when product parameters' do
+      before :each do
+        @products = (0..6).map{FactoryGirl.create :product}
+        get :index,product_ids:@products.map{|p|p.id}.take(3)
+      end
+      it 'returns the products requested' do
+        expect(json_response[:products].count).to eql 3
+      end
+    end
+
   end
 
   describe "GET #show" do

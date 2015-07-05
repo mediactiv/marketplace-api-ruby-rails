@@ -18,8 +18,6 @@
 
 .idea
 
-<<<<<<< HEAD
 *.orig
-=======
-*.orig
->>>>>>> master
+*.sublime-project
+*.sublime-workspace

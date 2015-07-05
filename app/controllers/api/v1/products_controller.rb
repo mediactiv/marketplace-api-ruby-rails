@@ -5,19 +5,12 @@ class Api::V1::ProductsController < ApplicationController
   # filters executed before executing an action
   before_action :authenticate_with_token!, only: [:create,:update,:destroy]
 
-  # index lists all products 
+  # index lists all products
   def index
-    if params[:user_id] && user = User.find(params[:user_id])
-      if current_user && user == current_user
-        respond_with current_user.products.all
-      else
-        respond_with user.find.products.all
-      end
-    else
-      respond_with Product.all
-    end
+    products = params[:product_ids].present? ?  get_product_list.find(params[:product_ids]) : get_product_list
+    respond_with products
   end
-  
+
   # show shows a product
   def show
     respond_with Product.find(params[:id])
@@ -55,4 +48,13 @@ class Api::V1::ProductsController < ApplicationController
     params.require(:product).permit(:title, :price, :published)
   end
 
+  # get_product_list gets products depending on wether a user_id paramter 
+  # is present and whether
+  def get_product_list
+    if params[:user_id] && user = User.find(params[:user_id])
+        user.find.products.all
+    else
+      Product.all
+    end
+  end
 end

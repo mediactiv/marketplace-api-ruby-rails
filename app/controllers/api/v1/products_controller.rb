@@ -1,3 +1,4 @@
+
 class Api::V1::ProductsController < ApplicationController
   #@note @rails set default response mime type
   respond_to :json
@@ -7,8 +8,12 @@ class Api::V1::ProductsController < ApplicationController
 
   # index lists all products
   def index
-    products = params[:product_ids].present? ?  get_product_list.find(params[:product_ids]) : get_product_list
-    respond_with products
+    products = params[:product_ids].present? ?  get_product_list.where(id:params[:product_ids]) : get_product_list
+    products = products.page(params[:page]).per(params[:per_page])
+    render json: products,meta: {pagination:
+                                {per_page:params[:per_page],
+                                  total_pages:products.total_pages,
+                                  total_objects:products.total_count }}
   end
 
   # show shows a product
@@ -52,9 +57,9 @@ class Api::V1::ProductsController < ApplicationController
   # is present and whether
   def get_product_list
     if params[:user_id] && user = User.find(params[:user_id])
-        user.find.products.all
+        user.products.all
     else
-      Product.all
+      Product.all #kaminari needs a scope
     end
   end
 end

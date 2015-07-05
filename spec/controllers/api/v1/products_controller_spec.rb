@@ -17,9 +17,17 @@ describe Api::V1::ProductsController  do
           expect(product_response[:user_id]).to be_present
         end
       end
+
+      #pagination test
+      it {expect(json_response).to have_key(:meta)}
+      it {expect(json_response[:meta]).to have_key(:pagination)}
+      it {expect(json_response[:meta][:pagination]).to have_key(:per_page)}
+      it {expect(json_response[:meta][:pagination]).to have_key(:total_pages)}
+      it {expect(json_response[:meta][:pagination]).to have_key(:total_objects)}
+      it {should respond_with 200}
     end
 
-    context 'when product parameters' do
+    context 'when product_ids parameters' do
       before :each do
         @products = (0..6).map{FactoryGirl.create :product}
         get :index,product_ids:@products.map{|p|p.id}.take(3)

@@ -17,15 +17,14 @@ describe Api::V1::UsersController do
     end
 
     it 'returns the information about a reporter on a hash' do
-      user_response = json_response[:user] # json_response defined in spec/support
-      expect(user_response[:email]).to eql @user.email
+      # json_response defined in spec/support
+      expect(json_response[:user][:email]).to eql @user.email
     end
 
     it { should respond_with 200 }
 
     it "has the product ids as an embeded object" do
-      user_response = json_response[:user]
-      expect(user_response[:product_ids]).to eql []
+      expect(json_response[:user][:product_ids]).to eql []
     end
     
   end
@@ -38,8 +37,7 @@ describe Api::V1::UsersController do
         post :create, {user: @user_attributes}
       end
       it "renders the json  representation  for the user  record  just  created" do
-        user_response = json_response[:user]
-        expect(user_response[:email]).to eql @user_attributes[:email]
+        expect(json_response[:user][:email]).to eql @user_attributes[:email]
       end
       it { should respond_with 201 }
     end
@@ -52,7 +50,6 @@ describe Api::V1::UsersController do
         post :create, {user: @invalid_user_attributes}
       end
       it "renders an  errors  json" do
-        user_response = json_response[:user]
         expect(json_response).to have_key(:errors)
       end
       it "renders the json  errors  on  why the user  could not be  created" do

@@ -36,7 +36,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 #APi gems
 gem 'puma'
 
-gem 'active_model_serializers', '0.9.3'
+gem 'active_model_serializers', '~> 0.10.x'
 gem 'devise'
 
 

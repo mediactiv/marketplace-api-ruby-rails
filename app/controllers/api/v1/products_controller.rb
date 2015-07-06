@@ -11,12 +11,7 @@ class Api::V1::ProductsController < ApplicationController
     per_page = params[:per_page] || 10
     products = params[:product_ids].present? ?  get_product_list.where(id:params[:product_ids]) : get_product_list
     products = products.page(params[:page]).per(per_page)
-    render json: products,meta: {pagination:
-      {per_page:per_page,
-        next_page: next_product_url(products),
-        previous_page: previous_product_url(products),
-        total_pages:products.total_pages,
-      total_objects:products.total_count }}
+    render json: products,meta: {pagination:app_paginator(products,per_page)}
     end
 
     # show shows a product
@@ -51,18 +46,6 @@ class Api::V1::ProductsController < ApplicationController
     end
 
     private
-
-    # next_product_url generates a url from a paginated list of products
-    # <ActiveRecord::Relation[<Product>]> => string
-    def next_product_url(paginated_products)
-      url_for controller: 'products' ,action: 'index',page: paginated_products.next_page
-    end
-
-    # previous_product_url generates a url from a paginated list of products
-    # <ActiveRecord::Relation[<Product>]> => string
-    def previous_product_url(paginated_products)
-      url_for controller: 'products' ,action: 'index',page: paginated_products.prev_page
-    end
 
     def product_params
       params.require(:product).permit(:title, :price, :published)
